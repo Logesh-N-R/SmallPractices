@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello world</title>
+</head>
+
+<body>
+    <p class="practice">Hi there</p>
+    <input type="text" id="hello">
+    <button class="hi" type="submit">Submit</button>
+    <hr>
+    <input type="text" class="search">
+    <button class="srchBtn" type="submit">search</button>
+    <h3 class="no">No result found</h3>
+    <div class="searchIn">
+        <p class="names">Loki</p>
+        <p class="names">Bala</p>
+        <p class="names">Mani</p>
+        <p class="names">Raja</p>
+        <p class="names">Venkat</p>
+        <p class="names">Raj</p>
+        <p class="names">Mohan</p>
+        <p class="names">Naren</p>
+        <p class="names">Ram</p>
+        <p class="names">Manoj</p>
+        <p class="names">Javeed</p>
+        <p class="names">Ganesh</p>
+        <p class="names">Asif</p>
+        <p class="names">Bharathi</p>
+        <p class="names">Kani</p>
+        <p class="names">Hari</p>
+    </div>
+    <center>
+        <div class="update">
+
+        </div>
+    </center>
+    
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.no').hide();
+            $('.hi').click(function(){
+            var a = $('#hello').val();
+                for (i = 0; i <= a; i++) {
+                for (j = 1; j <= i; j++) {
+                    $('.update').append(j+" ");
+                }
+                $('.update').append("<br>");
+            }
+
+            for(i=a;i>=0;i--){
+                for(j=i;j>0;j--){
+                    $('.update').append(j+" ");
+                }
+                $('.update').append("<br>");
+            }
+            for(i=0;i<=a;i++){
+                for(j=0;j<=i;j++){
+                    bw='<span>'+j+'</span>';
+                    color='<span style="color:red">I</span>';
+                    if(j==i){
+                    $('.update').append(color+" ");
+                    }
+                    else if(j==0){
+                    $('.update').append(color+" ");
+                    }
+                    else{
+                    $('.update').append(bw+" ");
+                    }
+                }
+                $('.update').append("<br>");
+            }
+            for(i=a;i>=0;i--){
+                for(j=i;j>=0;j--){
+                    bw='<span>'+j+'</span>';
+                    color='<span style="color:red">I</span>';
+                    if(j==i){
+                    $('.update').append(color+" ");
+                    }
+                    else if(j==0){
+                    $('.update').append(color+" ");
+                    }
+                    else{
+                    $('.update').append(bw+" ");
+                    }
+                }
+                $('.update').append("<br>");
+            }
+
+       })
+    
+       $('.search').keyup(function(){
+        $('.no').hide();
+        $('.names').show();
+           input=$('.search').val().toUpperCase();
+           len=$('.names').length;
+           for(i=0;i<len;i++){
+            compare=$('.names').eq(i).text().toUpperCase();
+            if(compare.indexOf(input)!=-1){
+                var split=compare.split(input);
+                var addon="<span style='color:red'>"+input+"</span>"
+                let output=split.join(addon);
+                $('.names').eq(i).html(output)
+                
+            }
+            else{
+                $('.names').eq(i).hide();
+            }
+           }
+           if(!$('.names').is(":visible")){
+               $('.no').show();
+        }
+       })
+
+    })
+    </script>
+</body>
+
+</html>
